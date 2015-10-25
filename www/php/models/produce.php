@@ -14,9 +14,9 @@
                    produce_desc = '$prod_desc',
                    price = $price,
                    quantity = $quantity,
-                   farmer = $farmer,
-                   unit = $unit,
-                   quality_grade = $quality";
+                   farmer_id = $farmer,
+                   unit = '$unit',
+                   quality_grade = '$quality'";
             
             return $this->query($str_query);
         }
@@ -37,8 +37,8 @@
         //update product price
         function update_price($prod_id, $price){
             $str_query = "UPDATE kasoa_produce SET
-                    unit_price  = $price
-                    WHERE product_id = $prod_id";
+                    price = $price
+                    WHERE produce_id = $prod_id";
             
             return $this->query($str_query);
         }
@@ -77,7 +77,7 @@
     }
 
 
-//$obj = new produce();
-//$obj->add_produce('yam', 'huge tubers', 2.0, 12, ,'A','kg' );
+$obj = new produce();
+$obj->update_quantity(2, 45);
 
 ?>

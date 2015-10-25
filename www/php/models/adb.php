@@ -9,7 +9,7 @@
 define("DB_HOST", 'localhost');
 //define("DB_NAME", 'csashesi_fredrick-abayie');
 
-define("DB_NAME", 'pos');
+define("DB_NAME", 'hackathon');
 define("DB_PORT", 3306);
 define("DB_USER","root");
 define("DB_PWORD","");
