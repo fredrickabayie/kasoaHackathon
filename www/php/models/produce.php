@@ -53,7 +53,7 @@
         }
         
         //search product
-        function search_product($search_text){
+        function search_produce($search_text){
             $str_query = "SELECT * FROM kasoa_produce WHERE
                     produce_name LIKE '%$search_text%'";
             
@@ -77,7 +77,12 @@
     }
 
 
-$obj = new produce();
-$obj->update_quantity(2, 45);
+//$obj = new produce();
+//if($obj->search_produce('y')){
+//    $row = $obj->fetch();
+//    echo $row['produce_name'];
+//}
+
+
 
 ?>
