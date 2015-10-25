@@ -8,27 +8,27 @@
         function produce(){}
         
         //add new product
-        function add_produce( $prod_name, $prod_desc, $price, $quantity, $farmer, $quality){
+        function add_produce( $prod_name, $prod_desc, $price, $quantity, $farmer, $quality, $unit){
             $str_query =  "INSERT into kasoa_produce SET
                    produce_name = '$prod_name',
                    produce_desc = '$prod_desc',
                    price = $price,
                    quantity = $quantity,
                    farmer = $farmer,
+                   unit = $unit,
                    quality_grade = $quality";
             
             return $this->query($str_query);
         }
         
         //update product information
-        function update_produce($prod_id, $prod_name, $prod_desc, $prod_price, $quantity){
-            $str_query = "UPDATE pos_products SET
+        function update_produce($prod_id, $prod_name, $prod_desc, $prod_price, $quantity, $quality){
+            $str_query = "UPDATE kasoa_produce SET
                     produce_name = '$prod_name',
-                   produce_desc = '$prod_desc',
-                   price = $price,
-                   quantity = $quantity,
-                   farmer = $farmer,
-                   quality_grade = $quality
+                    produce_desc = '$prod_desc',
+                    price = $price,
+                    quantity = $quantity,
+                    quality_grade = $quality
                     WHERE product_id = '$prod_id'";
             
             return $this->query($str_query);
@@ -36,7 +36,7 @@
        
         //update product price
         function update_price($prod_id, $price){
-            $str_query = "UPDATE pos_products SET
+            $str_query = "UPDATE kasoa_produce SET
                     unit_price  = $price
                     WHERE product_id = $prod_id";
             
@@ -45,33 +45,39 @@
         
         //update product quantity
         function update_quantity($prod_id, $quantity){
-            $str_query = "UPDATE pos_products SET
+            $str_query = "UPDATE kasoa_produce SET
                     quantity  = $quantity
-                    WHERE product_id = $prod_id";
+                    WHERE produce_id = $prod_id";
             
             return $this->query($str_query);
         }
         
+        //search product
         function search_product($search_text){
-            $str_query = "SELECT * FROM pos_products WHERE
-                    product_name LIKE '%$search_text%'";
-            
-            return $this->query($str_query);
-        }
-        
-        function view_products($){
-            $str_query = "SELECT * FROM pos_products";
+            $str_query = "SELECT * FROM kasoa_produce WHERE
+                    produce_name LIKE '%$search_text%'";
             
             return $this->query($str_query);
         }
         
         
-        function delete_product($product_id){
-            $str_query = "DELETE FROM pos_products WHERE product_id = $product_id";
+        //view products
+        function view_products(){
+            $str_query = "SELECT * FROM kasoa_produce";
+            
+            return $this->query($str_query);
+        }
+        
+        //delete product
+        function delete_product($produce_id){
+            $str_query = "DELETE FROM kasoa_produce WHERE produce_id = $produce_id";
             
             return $this->query($str_query);
         }
     }
 
+
+//$obj = new produce();
+//$obj->add_produce('yam', 'huge tubers', 2.0, 12, ,'A','kg' );
 
 ?>
