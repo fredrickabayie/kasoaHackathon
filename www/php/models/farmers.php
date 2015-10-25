@@ -6,7 +6,7 @@ include_once 'adb.php';
         function farmers(){}
         
         //add new user
-        function add_farmer($username, $password, $user_type){
+        function add_farmer($sname, $password, $user_type){
             $str_query =  "INSERT into pos_users SET
                    username = '$username',
                    password = '$password',
