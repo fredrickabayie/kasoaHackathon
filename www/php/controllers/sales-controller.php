@@ -69,7 +69,7 @@ function check_price(){
     
         if ($obj->view_price($message)){
             $row = $obj->fetch();
-            $mesg = $row['produce_type'].": ".$row['price'];
+            $mesg = $row['produce'].": ".$row['price'];
             header("Location: http://localhost/hackathon/kasoa_hackathon/kasoaHackathon/www/php/send_sms.php?cmd=3&phone={$phone}&mesg={$mesg}");
         }else{
             header("Location: http://localhost/hackathon/kasoa_hackathon/kasoaHackathon/www/php/send_sms.php?cmd=4&phone={$phone}");

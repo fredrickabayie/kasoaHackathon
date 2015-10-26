@@ -44,8 +44,8 @@ switch ($cmd) {
 
 	case 3: 
 		try{
-			$mesg = $_REQUEST['phone'];
-			$messageResponse = $messagingApi->sendQuickMessage("Important", "+233200393945", "Registration Unsuccessful");
+			$mesg = $_REQUEST['mesg'];
+			$messageResponse = $messagingApi->sendQuickMessage("Kasoa", "+".$phone, $mesg);
 			if ($messageResponse instanceof MessageResponse) {
 		        echo $messageResponse->getStatus();
 		    } elseif ($messageResponse instanceof HttpResponse) {

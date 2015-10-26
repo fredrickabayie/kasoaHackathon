@@ -46,12 +46,12 @@ function add_produce(){
     
         
         $message = $_GET['mesg'];
+        $phone = $_GET['phone'];
 
         $prod_details = explode(",", $message);
-        if(sizeof($prod_details) == 3){
+        if(sizeof($prod_details) == 2){
             $prod = $prod_details[0];
             $quantity = $prod_details[1];
-            $phone = $prod_details[2];
         }
         
         if ($obj->add_produce($prod, $quantity, $phone)){
