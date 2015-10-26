@@ -12,7 +12,7 @@ if(filter_input (INPUT_GET, 'cmd')){
             add_product();
             break;
         case 3:
-            edit_produce_price();
+            //edit_produce_price();
         default:
             echo '{"result":0, "message":"Invalid Command Entered"}';
             break;

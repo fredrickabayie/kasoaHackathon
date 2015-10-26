@@ -6,27 +6,24 @@ include_once 'adb.php';
         function farmers(){}
         
         //add new user
-        function add_farmer($sname, $fname, $location, $prod_type, $cert_grade){
+        function add_farmer($name, $location, $prod_type, $phone){
             $str_query =  "INSERT into kasoa_farmer SET
-                   farmer_sname = '$sname',
-                   farmer_fname = '$fname',
+                   name = '$name',
                    location = '$location',
                    produce_type = '$prod_type',
-                   certification_grade = '$cert_grade'";
+                   phone = '$phone'";
             
             return $this->query($str_query);
         }
         
         
         //function edit farmer details
-        function edit_farmer($farmer_id, $sname, $fname, $location, $prod_type, $cert_grade){
+        function edit_farmer($name, $location, $prod_type, $phone){
             $str_query = "UPDATE kasoa_farmer SET
-                   farmer_sname = '$sname',
-                   farmer_fname = '$fname',
+                   name = '$name',
                    location = '$location',
                    produce_type = '$prod_type',
-                   certification_grade = '$cert_grade'
-                   WHERE farmer_id = $farmer_id";
+                   WHERE phone = '$phone'";
             
             return $this->query($str_query);
         }
@@ -34,12 +31,12 @@ include_once 'adb.php';
     }
 
 
-//$obj = new farmers();
-//if($obj->edit_farmer(1, 'Kwame', 'Mintah' , 'Aseibu Nkwanta', 'yams', 'A')){
-//    echo 'worked';
-//}else{
-//    echo 'did not work';
-//}
+$obj = new farmers();
+if($obj->add_farmer('Kwasi Amofa', 'Ada','Plantain', '233200393945' )){
+   echo 'worked';
+}else{
+   echo 'did not work';
+}
 
 
 ?>

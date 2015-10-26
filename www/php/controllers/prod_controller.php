@@ -6,10 +6,10 @@ if(filter_input (INPUT_GET, 'cmd')){
                                     
     switch ($cmd){
         case 1:
-            show_sales();
+            show_farm_produce();
             break;
         case 2:
-            add_sale();            
+            add_produce();            
             break;
         default:
             echo '{"result":0, "message":"Invalid Command Entered"}';
@@ -18,11 +18,11 @@ if(filter_input (INPUT_GET, 'cmd')){
 }
 
 //show inventory of goods
-function show_sales(){
-    $obj = get_sales_model();
+function show_farm_produce(){
+    $obj = get_farm_model();
 
     if ($obj->view_sale()){
-        echo '{"result":1, "inventory":[';
+        echo '{"result":1, "products":[';
         $row = $obj->fetch();
         while($row){
             echo json_encode($row);
@@ -37,39 +37,30 @@ function show_sales(){
 }
 
 //add products to inventory
-function add_sale(){
+function add_produce(){
         //add_sales($produce_id,$quantity_purchased, $price, $buyer_id);
     
-       $obj  = $prod =  $quantity = $price = '';
+//    if( filter_input (INPUT_GET, 'prod') && filter_input(INPUT_GET, 'qty') && filter_input(INPUT_GET, 'phone')){
     
-    if( filter_input (INPUT_GET, 'prod') && filter_input(INPUT_GET, 'qty') && filter_input(INPUT_GET, 'price')){
+        $obj = get_farm_model();
     
-        $obj = get_sales_model();
-        $prod = sanitize_string(filter_input (INPUT_GET, 'prod'));
-        $quantity = sanitize_string(filter_input (INPUT_GET, 'qty'));
-        $price = sanitize_string(filter_input (INPUT_GET, 'price'));
         
-        if ($obj->add_sale($prod, $price, $quantity)){
-             echo '{"result":1,"message": "sale successful"}';
+        $message = $_GET['mesg'];
+
+        $prod_details = explode(",", $message);
+        if(sizeof($prod_details) == 3){
+            $prod = $prod_details[0];
+            $quantity = $prod_details[1];
+            $phone = $prod_details[2];
+        }
+        
+        if ($obj->add_produce($prod, $quantity, $phone)){
+             echo '{"result":1,"message": "information received"}';
                 
         }else{
             echo '{"result":0,"message": "unsuccesful query"}';
         }
         
-    }
-}
-
-function check_price(){
-    
-        $message = $_GET['mesg'];
-        $phone = $_GET['phone']
-
-        $prod_details = explode(",", $message);
-        if(sizeof($prod_details) == 1){
-            $prod = $prod_details[0];
-        }
-    
-    
     
 }
 
@@ -88,9 +79,9 @@ function edit_product_prices(){
 
 
 //function to get teller model
-function get_sales_model(){
-    require_once '../models/sales_model.php';
-    $obj = new sales_produce();
+function get_farm_model(){
+    require_once '../models/farm_produce.php';
+    $obj = new farm_produce();
     return $obj;
 }
 
