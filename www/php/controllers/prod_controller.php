@@ -9,7 +9,10 @@ if(filter_input (INPUT_GET, 'cmd')){
             show_farm_produce();
             break;
         case 2:
-            add_produce();            
+            add_produce();
+            break;
+        case 3:
+            
             break;
         default:
             echo '{"result":0, "message":"Invalid Command Entered"}';
