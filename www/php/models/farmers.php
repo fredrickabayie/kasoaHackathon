@@ -34,12 +34,12 @@ include_once 'adb.php';
     }
 
 
-$obj = new farmers();
-if($obj->edit_farmer(1, 'Kwame', 'Mintah' , 'Aseibu Nkwanta', 'yams', 'A')){
-    echo 'worked';
-}else{
-    echo 'did not work';
-}
+//$obj = new farmers();
+//if($obj->edit_farmer(1, 'Kwame', 'Mintah' , 'Aseibu Nkwanta', 'yams', 'A')){
+//    echo 'worked';
+//}else{
+//    echo 'did not work';
+//}
 
 
 ?>

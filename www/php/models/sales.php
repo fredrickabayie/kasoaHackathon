@@ -22,10 +22,15 @@
         
         //view sales
         function view_sales(){
-            $str_query = "SELECT * FROM kasoa_sales";
+            $str_query = "SELECT  
+                P.produce_name, P.quality_grade ,S.quantity, S.price, 
+                S.date_purchased, S.time_purchased
+                FROM kasoa_sales S, kasoa_produce P
+                WHERE P.produce_id = S.produce_id ";
             
             return $this->query($str_query);
         }
+        
         
         //view sales by date
         function view_sales_by_date($date){
@@ -49,6 +54,8 @@
     }
 
 $obj = new sales();
-$obj->add_sales(2, 45, 78, 1);
+if($obj->view_sales(2, 45, 78, 1)){
+    
+}
 
 ?>

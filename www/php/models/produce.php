@@ -62,7 +62,7 @@
         
         
         //view products
-        function view_products(){
+        function view_produce(){
             $str_query = "SELECT * FROM kasoa_produce";
             
             return $this->query($str_query);
@@ -78,7 +78,7 @@
 
 
 //$obj = new produce();
-//if($obj->search_produce('y')){
+//if($obj->view_produce()){
 //    $row = $obj->fetch();
 //    echo $row['produce_name'];
 //}
