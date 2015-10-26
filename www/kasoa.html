@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Kasoa</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+    
+    <div class="container">
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">Logo</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+          <li><a style="font-size:12px" class="modal-trigger waves-effect waves-light btn-flat" href="#">Sign in</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="index.html">Home</a></li>
+          <li><a style="font-size:12px" class="modal-trigger waves-effect waves-light btn-flat" href="#">Sign in</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+        
+        <div style="margin-top:10px" class="">
+            <div class="row">
+                
+                <div class="col s12">
+                  <ul class="tabs">
+                    <li class="tab col s3 farmers_table"><a class="active" href="#farmers_table">Farmers</a></li>
+                    <li class="tab col s3"><a class="prices_table" href="#prices_table">Prices</a></li>
+                    <li class="tab col s3"><a href="#produce_table">Produce</a></li>
+                  </ul>
+                </div>
+                
+                <div id="farmers_table" class="col s12">
+                    <table>
+                        <thead>
+                          <tr>
+                              <th data-field="farmer_name">Farmer Name</th>
+                              <th data-field="farmer_number">Farmer Number</th>
+                              <th data-field="farmer">Farmer Location</th>
+                              <th data-field="price">Produce Type</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr>
+                            <td>Alvin</td>
+                            <td>Eclair</td>
+                            <td>$0.87</td>
+                          </tr>
+                          <tr>
+                            <td>Alan</td>
+                            <td>Jellybean</td>
+                            <td>$3.76</td>
+                          </tr>
+                          <tr>
+                            <td>Jonathan</td>
+                            <td>Lollipop</td>
+                            <td>$7.00</td>
+                          </tr>
+                        </tbody>
+                  </table>
+                </div>
+                
+                <div id="prices_table" class="col s12">
+                    <a class="btn">+</a>
+                    </div>
+                
+                <div id="produce_table" class="col s12">
+                
+                </div>
+                
+              </div>
+        </div>
+
+    </div>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
