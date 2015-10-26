@@ -9,8 +9,10 @@ if(filter_input (INPUT_GET, 'cmd')){
             show_inventory();
             break;
         case 2:
-        
+            add_product();
             break;
+        case 3:
+            edit_produce_price();
         default:
             echo '{"result":0, "message":"Invalid Command Entered"}';
             break;
@@ -39,35 +41,51 @@ function show_inventory(){
 }
 
 //add products to inventory
-//function add_product(){
-//    
-//    $obj  = $username = $password = $usertype = $row = '';
-//    
-//    if( filter_input (INPUT_GET, 'username') && filter_input(INPUT_GET, 'password') && filter_input(INPUT_GET, 'usertype')){
-//    
-//        $obj = get_user_model();
-//        $username = sanitize_string(filter_input (INPUT_GET, 'username'));
-//        $password = sanitize_string(filter_input (INPUT_GET, 'password'));
-//        $password = encrypt($password);
-//        $usertype = sanitize_string(filter_input (INPUT_GET, 'usertype'));
-//        
-//        if ($obj->add_user($username, $password, $usertype)){
-//             if( strcmp($usertype, 'admin') == 0){
-//                admin_signup($obj->get_insert_id());
-//             }elseif( strcmp($usertype, 'teller') == 0){
-//                 teller_signup($obj->get_insert_id());
-//             }
-//                
-//        }else{
-//            echo '{"result":0,"message": "signup unsuccessful"}';
-//        }
-//        
-//    }
-//}
+function add_product(){
+    
+    $obj  = $prod_name = $prod_desc = $price = $quantity = $farmer = $quality = $unit = '';
+    
+    if( filter_input (INPUT_GET, 'pname') && filter_input(INPUT_GET, 'desc') && filter_input(INPUT_GET, 'price') && filter_input(INPUT_GET, 'quantity') && filter_input(INPUT_GET, 'fid') && filter_input(INPUT_GET, 'quality') && filter_input(INPUT_GET, 'unit')){
+    
+        $obj = get_produce_model();
+        $prod_name = sanitize_string(filter_input (INPUT_GET, 'pname'));
+        $prod_desc = sanitize_string(filter_input (INPUT_GET, 'desc'));
+        $price = sanitize_string(filter_input (INPUT_GET, 'price'));
+        $quantity = sanitize_string(filter_input (INPUT_GET, 'quantity'));
+        $farmer = sanitize_string(filter_input (INPUT_GET, 'fid'));
+        $quality = sanitize_string(filter_input (INPUT_GET, 'quality'));
+        $unit = sanitize_string(filter_input (INPUT_GET, 'unit'));
+        
+        if ($obj->add_produce( $prod_name, $prod_desc, $price, $quantity, $farmer, $quality, $unit)){
+             echo '{"result":1,"message": "produce added to inventory"}';
+                
+        }else{
+            echo '{"result":0,"message": "unsuccesful query"}';
+        }
+        
+    }
+}
 
 //edit product prices
-function edit_produce_prices(){
-
+function edit_produce_price(){
+    
+    $obj  = $prod_id = $price  = '';
+    
+    if( filter_input (INPUT_GET, 'pid') && filter_input(INPUT_GET, 'price')){
+    
+        $obj = get_produce_model();
+        $prod_id = sanitize_string(filter_input (INPUT_GET, 'pid'));
+        $price = sanitize_string(filter_input (INPUT_GET, 'price'));
+        
+        
+        if ($obj->update_price( $prod_name, $prod_desc, $price, $quantity, $farmer, $quality, $unit)){
+             echo '{"result":1,"message": "price set successfully"}';
+                
+        }else{
+            echo '{"result":0,"message": "unsuccesful query"}';
+        }
+        
+    }
 }
 
 //edit product quantities
