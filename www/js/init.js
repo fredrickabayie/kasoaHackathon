@@ -52,7 +52,7 @@ function sendRequest(u) {
     "use strict";
     $('#farmers_table').ready(function () {
         var url, obj;
-        url ="";
+        url ="http://10.10.29.193/";
         if (obj.result === 1){
             var div = "";
             for (var index in obj.price){
