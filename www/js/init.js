@@ -79,14 +79,15 @@ function sendRequest(u) {
     "use strict";
     $('#farmers_table').ready(function () {
         var url, obj;
-        url ="";
+        url ="../php/controllers/produce-controller.php?cmd=1";
         if (obj.result === 1){
             var div = "";
-            for (var index in obj.produce){
                 div += "<table><thead><tr>";
                 div += "<th data-field='farmer_name'>"+obj.produce[index]+"</th>";
                 div += "<th data-field='farmer_number'>"+obj.produce[index]+"</th>";
                 div += "<th data-field='farmer_name'>"+obj.produce[index]+"</th>";
+            for (var index in obj.produce){
+                
                 div += "</tr></thead><tbody><tr>";
                 div += "<td>"+obj.produce[index].name+"</td>";
                 div += "<td>"+obj.produce[index].produce_quantity+"</td>";
