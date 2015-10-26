@@ -74,6 +74,7 @@
             
             return $this->query($str_query);
         }
+         
     }
 
 
