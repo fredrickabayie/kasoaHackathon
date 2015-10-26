@@ -11,6 +11,9 @@ if(filter_input (INPUT_GET, 'cmd')){
         case 2:
             add_sale();            
             break;
+        case 3:
+            check_price();            
+            break;
         default:
             echo '{"result":0, "message":"Invalid Command Entered"}';
             break;
@@ -60,17 +63,17 @@ function add_sale(){
 }
 
 function check_price(){
-    
+        $obj = get_sales_model();
         $message = $_GET['mesg'];
-        $phone = $_GET['phone']
-
-        $prod_details = explode(",", $message);
-        if(sizeof($prod_details) == 1){
-            $prod = $prod_details[0];
-        }
+        $phone = $_GET['phone'];
     
-    
-    
+        if ($obj->view_price($message)){
+            $row = $obj->fetch();
+            $mesg = $row['produce_type'].": ".$row['price'];
+            header("Location: http://localhost/hackathon/kasoa_hackathon/kasoaHackathon/www/php/send_sms.php?cmd=3&phone={$phone}&mesg={$mesg}");
+        }else{
+            header("Location: http://localhost/hackathon/kasoa_hackathon/kasoaHackathon/www/php/send_sms.php?cmd=4&phone={$phone}");
+        } 
 }
 
 //edit product prices

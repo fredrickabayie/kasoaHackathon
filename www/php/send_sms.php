@@ -44,7 +44,7 @@ switch ($cmd) {
 
 	case 3: 
 		try{
-			
+			$mesg = $_REQUEST['phone'];
 			$messageResponse = $messagingApi->sendQuickMessage("Important", "+233200393945", "Registration Unsuccessful");
 			if ($messageResponse instanceof MessageResponse) {
 		        echo $messageResponse->getStatus();
