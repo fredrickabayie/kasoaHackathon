@@ -9,7 +9,7 @@ if(filter_input (INPUT_GET, 'cmd')){
             show_sales();
             break;
         case 2:
-                        
+            add_sale();            
             break;
         default:
             echo '{"result":0, "message":"Invalid Command Entered"}';
@@ -37,22 +37,24 @@ function show_sales(){
 }
 
 //add products to inventory
-function add_product(){
-       $obj  = $prod_name = $prod_desc = $price = $quantity = $farmer = $quality = $unit = '';
+function add_sale(){
+        //add_sales($produce_id,$quantity_purchased, $price, $buyer_id);
     
-    if( filter_input (INPUT_GET, 'pname') && filter_input(INPUT_GET, 'desc') && filter_input(INPUT_GET, 'price') && filter_input(INPUT_GET, 'quantity') && filter_input(INPUT_GET, 'fid') && filter_input(INPUT_GET, 'quality') && filter_input(INPUT_GET, 'unit')){
+       $obj  = $prod_id = $quantity = $price = $buyer_id = '';
     
-        $obj = get_produce_model();
-        $prod_name = sanitize_string(filter_input (INPUT_GET, 'pname'));
-        $prod_desc = sanitize_string(filter_input (INPUT_GET, 'desc'));
-        $price = sanitize_string(filter_input (INPUT_GET, 'price'));
+    if( filter_input (INPUT_GET, 'pid') && filter_input(INPUT_GET, 'quantity') && filter_input(INPUT_GET, 'price') && filter_input(INPUT_GET, 'bid')){
+    
+        $obj = get_sales_model();
+        $prod_id = sanitize_string(filter_input (INPUT_GET, 'pid'));
+        $prod_id = intval($prod_id);
         $quantity = sanitize_string(filter_input (INPUT_GET, 'quantity'));
-        $farmer = sanitize_string(filter_input (INPUT_GET, 'fid'));
-        $quality = sanitize_string(filter_input (INPUT_GET, 'quality'));
-        $unit = sanitize_string(filter_input (INPUT_GET, 'unit'));
+        $quantity = intval($quantity);
+        $price = sanitize_string(filter_input (INPUT_GET, 'price'));
+        $buyer_id = sanitize_string(filter_input (INPUT_GET, 'buyer_id'));
+        $buyer_id = intval($buyer_id);
         
-        if ($obj->add_produce( $prod_name, $prod_desc, $price, $quantity, $farmer, $quality, $unit)){
-             echo '{"result":1,"message": "produce added to inventory"}';
+        if ($obj->add_sales( $prod_id, $quantity, $price, $buyer_id)){
+             echo '{"result":1,"message": "sale successful"}';
                 
         }else{
             echo '{"result":0,"message": "unsuccesful query"}';

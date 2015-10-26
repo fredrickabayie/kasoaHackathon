@@ -54,7 +54,7 @@
     }
 
 $obj = new sales();
-if($obj->view_sales(2, 45, 78, 1)){
+if($obj->add_sales(2, 45, 78, 1)){
     
 }
 
